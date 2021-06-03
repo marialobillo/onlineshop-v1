@@ -4,6 +4,8 @@
     <div class="container">
         <h1 class="text-center">Products</h1>
 
+        <a class="btn btn-success" href="{{ route('products.create') }}">Create new Product</a>
+
         @empty($products)
             <div class="alert alert-warning">
                 The list of products is empty.
@@ -21,6 +23,7 @@
                         <th>Price</th>
                         <th>Stock</th>
                         <th>Status</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -32,6 +35,17 @@
                             <td>{{ $product->price }}</td>
                             <td>{{ $product->stock }}</td>
                             <td>{{ $product->status }}</td>
+                            <td>
+                                <a class="btn btn-link"
+                                   href="{{ route('products.show', ['product' => $product->id]) }}">
+                                    Show</a>
+                                <a class="btn btn-link"
+                                   href="{{ route('products.edit', ['product' => $product->id]) }}">
+                                    Edit</a>
+{{--                                <a class="btn btn-link"--}}
+{{--                                   href="{{ route('products.delete', ['product' => $product->id]) }}">--}}
+{{--                                    Delete</a>--}}
+                            </td>
                         </tr>
                     @endforeach
 
