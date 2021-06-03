@@ -27,13 +27,6 @@ class ProductController extends Controller
 
     public function store()
     {
-//        $product = Product::create([
-//            'title' => request()->title,
-//            'description' => request()->description,
-//            'price' => request()->price,
-//            'stock' => request()->stock,
-//            'status' => request()->status,
-//        ]);
 
         $product = Product::create(request()->all());
 
@@ -52,12 +45,18 @@ class ProductController extends Controller
 
     public function edit($product)
     {
-        return 'This edit';
+        return view('products.edit')->with([
+            'product' => Product::findOrFail($product)
+        ]);
     }
 
-    public function update($product)
+    public function update($productId)
     {
-        return 'This update';
+        $product = Product::findOrFail($productId);
+
+        $product->update(request()->all());
+
+        return $product;
     }
 
     public function delete($product)

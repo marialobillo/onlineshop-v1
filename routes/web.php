@@ -28,8 +28,11 @@ Route::post('products',
 Route::get('products/{product}',
     [ProductController::class, 'show'])->name('products.show');
 
-Route::match(['put', 'patch'], 'products/{product}',
-    [ProductController::class, 'edit'])->name('products.update');
+Route::get('products/{product}/edit',
+    [ProductController::class, 'edit'])->name('products.edit');
+
+Route::put('products/{productId}',
+    [ProductController::class, 'update'])->name('products.update');
 
 Route::delete('products/{product}',
     [ProductController::class, 'delete'])->name('products.destroy');
