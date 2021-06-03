@@ -30,7 +30,7 @@
 
             <div class="form-group">
                 <label for="">Status</label>
-                <select name="staus" id="status" class="form-control" required>
+                <select name="status" id="status" class="form-control" required>
                     <option value="">Select...</option>
                     <option value="available">Available</option>
                     <option value="unavailable">Unavailable</option>
