@@ -21,11 +21,13 @@ class ProductController extends Controller
 
     public function create()
     {
-        return 'THis create';
+
+        return view('products.create');
     }
 
     public function store()
     {
+        dd('Estamos en store');
         return 'this store';
     }
 
