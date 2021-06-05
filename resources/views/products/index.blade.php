@@ -42,9 +42,13 @@
                                 <a class="btn btn-link"
                                    href="{{ route('products.edit', ['product' => $product->id]) }}">
                                     Edit</a>
-{{--                                <a class="btn btn-link"--}}
-{{--                                   href="{{ route('products.delete', ['product' => $product->id]) }}">--}}
-{{--                                    Delete</a>--}}
+                                <form
+                                    action="{{ route('products.destroy', ['product' => $product->id]) }}"
+                                    method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-link">Delete</button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach
