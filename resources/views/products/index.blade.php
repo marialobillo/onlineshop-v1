@@ -37,11 +37,12 @@
                             <td>{{ $product->status }}</td>
                             <td>
                                 <a class="btn btn-link"
-                                   href="{{ route('products.show', ['product' => $product->id]) }}">
+                                   href="{{ route('products.show', ['product' => $product]) }}">
                                     Show</a>
                                 <a class="btn btn-link"
-                                   href="{{ route('products.edit', ['product' => $product->id]) }}">
+                                   href="{{ route('products.edit', ['product' => $product]) }}">
                                     Edit</a>
+
                                 <form
                                     action="{{ route('products.destroy', ['product' => $product->id]) }}"
                                     method="POST">

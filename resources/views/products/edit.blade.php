@@ -11,28 +11,28 @@
             <div class="form-group">
                 <label for="">Title</label>
                 <input type="text" name="title" class="form-control"
-                       value="{{ $product->title }}"
+                       value="{{ old('title') ?? $product->title }}"
                        required>
             </div>
 
             <div class="form-group">
                 <label for="">Description</label>
                 <input type="text" name="description" class="form-control"
-                       value="{{ $product->description }}"
+                       value="{{ old('description') ?? $product->description }}"
                        required>
             </div>
 
             <div class="form-group">
                 <label for="">Price</label>
                 <input type="number" name="price" min="1.00" step="0.01"
-                       value="{{ $product->price }}"
+                       value="{{ old('price') ?? $product->price }}"
                        class="form-control" required>
             </div>
 
             <div class="form-group">
                 <label for="">Stock</label>
                 <input type="number" name="stock" class="form-control"
-                       value="{{ $product->stock }}"
+                       value="{{ old('stock') ?? $product->stock }}"
                        required>
             </div>
 
@@ -40,9 +40,9 @@
                 <label for="">Status</label>
                 <select name="status" id="status" class="form-control" required>
                     <option value="">Select...</option>
-                    <option {{ $product->status === 'available' ? 'selected' : '' }}
+                    <option {{ old('status') == 'available' ? 'selected' : ($product->status == 'available' ? 'selected' : '') }}
                             value="available">Available</option>
-                    <option {{ $product->status === 'unavailable' ? 'selected' : '' }}
+                    <option {{ old('status') == 'unavailable' ? 'selected' : ($product->status == 'unavailable' ? 'selected' : '') }}
                             value="unavailable">Unavailable</option>
                 </select>
             </div>

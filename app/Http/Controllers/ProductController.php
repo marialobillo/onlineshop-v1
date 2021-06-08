@@ -40,7 +40,10 @@ class ProductController extends Controller
         if(request()->status == 'available' && request()->stock == 0)
         {
             session()->flash('error', 'If available must have stock');
-            return redirect()->back();
+
+            return redirect()
+                ->back()
+                ->withInput(request()->all());
         }
 
         session()->forget('error');
@@ -62,6 +65,22 @@ class ProductController extends Controller
 
     public function edit($product)
     {
+
+        //dd($productId);
+
+
+
+        $product = Product::findOrFail($product);
+
+        //dd($product);
+
+        return view('products.edit')->with([
+            'product' => $product
+        ]);
+    }
+
+    public function update($productId)
+    {
         $rules = [
             'title' => ['required', 'max:255'],
             'description' => ['required', 'max:1000'],
@@ -72,13 +91,6 @@ class ProductController extends Controller
 
         request()->validate($rules);
 
-        return view('products.edit')->with([
-            'product' => Product::findOrFail($product)
-        ]);
-    }
-
-    public function update($productId)
-    {
         $product = Product::findOrFail($productId);
 
         $product->update(request()->all());
