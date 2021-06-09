@@ -44,7 +44,8 @@ class ProductController extends Controller
 
             return redirect()
                 ->back()
-                ->withInput(request()->all());
+                ->withInput(request()->all())
+                ->withErrors('If available must have stock');
         }
 
 
