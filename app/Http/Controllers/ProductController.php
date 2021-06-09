@@ -48,13 +48,13 @@ class ProductController extends Controller
                 ->withErrors('If available must have stock');
         }
 
-
-
         $product = Product::create(request()->all());
 
         session()->flash('success', "The new product with id {$product->id} was created");
 
-        return redirect()->route('products.index');
+        return redirect()
+            ->route('products.index')
+            ->withSucess("The product with id {$product->id} was created.");
     }
 
     public function show($product)
@@ -101,6 +101,8 @@ class ProductController extends Controller
 
         $product->delete();
 
-        return redirect()->route('products.index');
+        return redirect()
+            ->route('products.index')
+            ->withSuccess("The product with id {$product->id} was deleted.");
     }
 }
