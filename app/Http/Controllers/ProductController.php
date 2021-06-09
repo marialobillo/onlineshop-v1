@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Model;
 
 class ProductController extends Controller
 {
@@ -46,16 +47,18 @@ class ProductController extends Controller
                 ->withInput(request()->all());
         }
 
-        session()->forget('error');
+
 
         $product = Product::create(request()->all());
+
+        session()->flash('success', "The new product with id {$product->id} was created");
 
         return redirect()->route('products.index');
     }
 
     public function show($product)
     {
-        $product = Product::findOrFail($product);
+        $product = Product::query()->findOrFail($product);
 
         return view('products.show')->with([
             'product' => $product,
@@ -65,14 +68,7 @@ class ProductController extends Controller
 
     public function edit($product)
     {
-
-        //dd($productId);
-
-
-
-        $product = Product::findOrFail($product);
-
-        //dd($product);
+        $product = Product::query()->findOrFail($product);
 
         return view('products.edit')->with([
             'product' => $product
@@ -91,7 +87,7 @@ class ProductController extends Controller
 
         request()->validate($rules);
 
-        $product = Product::findOrFail($productId);
+        $product = Product::query()->findOrFail($productId);
 
         $product->update(request()->all());
 
@@ -100,7 +96,7 @@ class ProductController extends Controller
 
     public function delete($product)
     {
-        $product = Product::findOrFail($product);
+        $product = Product::query()->findOrFail($product);
 
         $product->delete();
 
