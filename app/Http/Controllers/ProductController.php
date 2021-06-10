@@ -9,6 +9,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class ProductController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     public function index()
     {
@@ -57,9 +61,9 @@ class ProductController extends Controller
             ->withSucess("The product with id {$product->id} was created.");
     }
 
-    public function show($product)
+    public function show(Product $product)
     {
-        $product = Product::query()->findOrFail($product);
+        //$product = Product::query()->findOrFail($product);
 
         return view('products.show')->with([
             'product' => $product,
@@ -67,9 +71,9 @@ class ProductController extends Controller
 
     }
 
-    public function edit($product)
+    public function edit(Product $product)
     {
-        $product = Product::query()->findOrFail($product);
+       // $product = Product::query()->findOrFail($product);
 
         return view('products.edit')->with([
             'product' => $product
@@ -95,9 +99,9 @@ class ProductController extends Controller
         return redirect()->route('products.index');
     }
 
-    public function delete($product)
+    public function delete(Product $product)
     {
-        $product = Product::query()->findOrFail($product);
+        //$product = Product::query()->findOrFail($product);
 
         $product->delete();
 
