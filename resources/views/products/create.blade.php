@@ -1,11 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Create a Product</h1>
+    <h1>Create new Product</h1>
 
+    <div class="col-md-6 m-4">
     <form action="{{ route('products.store')  }}" method="POST">
         @csrf
-        <div class="form-row">
+
 
             <div class="form-group">
                 <label for="">Title</label>
@@ -46,7 +47,8 @@
                 <button type="submit" class="btn btn-primary btn-block">
                     Create Product</button>
             </div>
-        </div>
+
     </form>
 
+    </div>
 @endsection

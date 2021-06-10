@@ -4,7 +4,7 @@
     <div class="container">
         <h1 class="text-center">Products</h1>
 
-        <a class="btn btn-success" href="{{ route('products.create') }}">Create new Product</a>
+        <a class="btn btn-success mb-2" href="{{ route('products.create') }}">Create new Product</a>
 
         @empty($products)
             <div class="alert alert-warning">
@@ -44,6 +44,7 @@
                                     Edit</a>
 
                                 <form
+                                    class="d-inline"
                                     action="{{ route('products.destroy', ['product' => $product->id]) }}"
                                     method="POST">
                                     @csrf

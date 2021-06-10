@@ -3,19 +3,20 @@
 @section('content')
     <h1>Create a Product</h1>
 
+    <div class="col-md-6 m-4">
     <form action="{{ route('products.update', ['productId' => $product->id])  }}" method="POST">
         @csrf
         @method('PUT')
-        <div class="form-row">
 
-            <div class="form-group">
+
+            <div class="form-row">
                 <label for="">Title</label>
                 <input type="text" name="title" class="form-control"
                        value="{{ old('title') ?? $product->title }}"
                        required>
             </div>
 
-            <div class="form-group">
+            <div class="form-row">
                 <label for="">Description</label>
                 <input type="text" name="description" class="form-control"
                        value="{{ old('description') ?? $product->description }}"
@@ -51,7 +52,9 @@
                 <button type="submit" class="btn btn-primary btn-block">
                     Edit Product</button>
             </div>
-        </div>
+
     </form>
+
+    </div>
 
 @endsection
