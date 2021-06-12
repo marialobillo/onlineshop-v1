@@ -4,7 +4,7 @@
     <h1>Create a Product</h1>
 
     <div class="col-md-6 m-4">
-    <form action="{{ route('products.update', ['productId' => $product->id])  }}" method="POST">
+    <form action="{{ route('products.update', ['product' => $product])  }}" method="POST">
         @csrf
         @method('PUT')
 
