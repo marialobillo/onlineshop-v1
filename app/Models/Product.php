@@ -33,4 +33,9 @@ class Product extends Model
     {
         return $this->belongsToMany(Order::class)->withPivot('quantity');
     }
+
+    public function images()
+    {
+        return $this->morphMany(Image::class, 'imageable');
+    }
 }
