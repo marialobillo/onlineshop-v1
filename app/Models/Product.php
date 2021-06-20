@@ -33,11 +33,16 @@ class Product extends Model
     public function orders()
     {
         return $this->morphedByMany(Order::class, 'productable')
-            ->withPivot('quantity');
+             ->withPivot('quantity');
     }
 
     public function images()
     {
         return $this->morphMany(Image::class, 'imageable');
+    }
+
+    public function scopeAvailable($query)
+    {
+        $query->where('status', 'available');
     }
 }
