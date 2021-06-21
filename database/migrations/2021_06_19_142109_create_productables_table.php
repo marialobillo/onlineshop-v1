@@ -14,10 +14,8 @@ class CreateProductablesTable extends Migration
     public function up()
     {
         Schema::create('productables', function (Blueprint $table) {
-            $table->id();
             $table->bigInteger('product_id')->unsigned();
             $table->integer('quantity')->unsigned();
-            $table->timestamps();
             $table->morphs('productable');
 
             $table->foreign('product_id')->references('id')->on('products');

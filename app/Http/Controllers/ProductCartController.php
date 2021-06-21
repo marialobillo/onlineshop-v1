@@ -15,10 +15,11 @@ class ProductCartController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request, Product $product)
     {
+
         $cart = $this->getFromCookieOrCreate();
 
         $quantity = $cart->products()
@@ -26,10 +27,8 @@ class ProductCartController extends Controller
                 ->pivot
                 ->quantity ?? 0;
 
-
-
         $cart->products()->syncWithoutDetaching([
-            $product->id => ['quantity' => $quantity + 1 ]
+            $product->id => ['quantity' => $quantity + 1],
         ]);
 
         // cookie for 7 days
@@ -37,7 +36,6 @@ class ProductCartController extends Controller
 
         return redirect()->back()->cookie($cookie);
     }
-
     /**
      * Remove the specified resource from storage.
      *
