@@ -6,10 +6,16 @@ use App\Models\Cart;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
+use App\Services\CartService;
 
 class ProductCartController extends Controller
 {
+    public $cartService;
 
+    public function __construct(CartService $cartService)
+    {
+        $this->cartService = $cartService;
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -20,7 +26,7 @@ class ProductCartController extends Controller
     public function store(Request $request, Product $product)
     {
 
-        $cart = $this->getFromCookieOrCreate();
+        $cart = $this->cartService->getFromCookieOrCreate();
 
         $quantity = $cart->products()
                 ->find($product->id)
@@ -48,13 +54,4 @@ class ProductCartController extends Controller
         //
     }
 
-    public function getFromCookieOrCreate()
-    {
-        // Check out if the cart exists
-        $cartId = Cookie::get('cart');
-        // in this case we got a cart
-        $cart = Cart::find($cartId);
-
-        return $cart ?? Cart::create();
-    }
 }
