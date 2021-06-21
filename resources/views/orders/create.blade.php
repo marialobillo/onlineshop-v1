@@ -2,19 +2,18 @@
 
 @section('content')
     <div class="container">
-        <h1 class="text-center">Products</h1>
+        <h2>Order Details</h2>
 
-        <a class="btn btn-success mb-2" href="{{ route('products.create') }}">Create new Product</a>
+        <h4 class="text-center">Total: <strong>${{ $cart->total }}</strong></h4>
 
             <div class="table-responsive">
-                <table class="table table-stripped">
+                <table class="table table-stripped table-secondary">
                     <thead>
                     <tr>
                         <th>Product</th>
                         <th>Quantity</th>
                         <th>Price</th>
                         <th>Total</th>
-                        <th>Options</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -28,20 +27,10 @@
                             <td>{{ $product->price }}</td>
                             <td>
                                 <strong>
-                                    {{ $product->pivot->quantity * $product->price }}
+                                    ${{ $product->total }}
                                 </strong>
                             </td>
-                            <td>
 
-                                <form
-                                    class="d-inline"
-                                    action="{{ route('products.destroy', ['product' => $product->id]) }}"
-                                    method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-link">Delete</button>
-                                </form>
-                            </td>
                         </tr>
                     @endforeach
 
