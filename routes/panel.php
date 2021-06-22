@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\MainController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\Panel\ProductController;
 /*
 |--------------------------------------------------------------------------
 | Admin Panel Routes
