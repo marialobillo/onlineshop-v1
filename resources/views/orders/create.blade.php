@@ -6,6 +6,17 @@
 
         <h4 class="text-center">Total: <strong>${{ $cart->total }}</strong></h4>
 
+        <div class="text-center mb-3">
+            <form class="d-inline"
+                  method="POST"
+                  action="{{ route('orders.store') }}"
+            >
+                @csrf
+                <button type="submit" class="btn btn-success">Confirm Order</button>
+            </form>
+        </div>
+
+
             <div class="table-responsive">
                 <table class="table table-stripped table-secondary">
                     <thead>
