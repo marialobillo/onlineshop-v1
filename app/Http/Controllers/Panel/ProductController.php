@@ -19,18 +19,15 @@ class ProductController extends Controller
         return view('products.index')->with([
             'products' => $products
         ]);
-
     }
 
     public function create()
     {
-
         return view('products.create');
     }
 
     public function store(ProductRequest $request)
     {
-
         session()->flash('error', 'If available must have stock');
 
         $product = Product::create(request()->validated());
