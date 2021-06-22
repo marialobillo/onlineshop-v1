@@ -37,13 +37,14 @@ class RouteServiceProvider extends ServiceProvider
     {
         $this->configureRateLimiting();
 
-        
+
     }
 
     public function map()
     {
         $this->mapApiRoutes();
         $this->mapWebRoutes();
+        $this->mapPanelRoutes();
 
     }
 
@@ -74,5 +75,16 @@ class RouteServiceProvider extends ServiceProvider
         RateLimiter::for('api', function (Request $request) {
             return Limit::perMinute(60)->by(optional($request->user())->id ?: $request->ip());
         });
+    }
+
+    /*
+     * @return void
+     */
+    protected function mapPanelRoutes()
+    {
+        Route::prefix('panel')
+            ->middleware(['web', 'auth'])
+            ->namespace("{$this->namespace}\Panel")
+            ->group(base_path('routes/panel.php'));
     }
 }
