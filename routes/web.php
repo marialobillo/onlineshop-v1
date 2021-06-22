@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\MainController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProductController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,8 +15,6 @@ use App\Http\Controllers\ProductController;
 
 
 Route::get('/', [MainController::class, 'index'])->name('main');
-
-Route::resource('products', 'ProductController');
 
 Route::resource('products.carts', 'ProductCartController')->only(['store', 'destroy']);
 
