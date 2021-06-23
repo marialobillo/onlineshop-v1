@@ -9,13 +9,14 @@ use App\Scopes\AvailableScope;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\PanelProduct;
 
 class ProductController extends Controller
 {
 
     public function index()
     {
-        $products = Product::withoutGlobalScope(AvailableScope::class)->get();
+        $products = PanelProduct::all();
 
         return view('products.index')->with([
             'products' => $products
@@ -31,7 +32,7 @@ class ProductController extends Controller
     {
         session()->flash('error', 'If available must have stock');
 
-        $product = Product::create(request()->validated());
+        $product = PanelProduct::create(request()->validated());
 
         session()->flash('success', "The new product with id {$product->id} was created");
 
@@ -40,7 +41,7 @@ class ProductController extends Controller
             ->withSucess("The product with id {$product->id} was created.");
     }
 
-    public function show(Product $product)
+    public function show(PanelProduct $product)
     {
         return view('products.show')->with([
             'product' => $product,
@@ -48,14 +49,14 @@ class ProductController extends Controller
 
     }
 
-    public function edit(Product $product)
+    public function edit(PanelProduct $product)
     {
         return view('products.edit')->with([
             'product' => $product
         ]);
     }
 
-    public function update(ProductRequest $request, Product $product)
+    public function update(ProductRequest $request, PanelProduct $product)
     {
         $product->update($request->validated());
         session()->flash('success', "The product with id {$product->id} was upated.");
@@ -63,7 +64,7 @@ class ProductController extends Controller
         return redirect()->route('products.index');
     }
 
-    public function destroy(Product $product)
+    public function destroy(PanelProduct $product)
     {
         $product->delete();
         return redirect()
