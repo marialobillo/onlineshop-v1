@@ -16,6 +16,8 @@
                         @include('components.product-card')
                      </div>
                  @endforeach
+
+{{--                @dd(\DB::getQueryLog())--}}
              </div>
          @endempty
 

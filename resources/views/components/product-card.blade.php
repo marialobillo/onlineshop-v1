@@ -1,6 +1,6 @@
 
 <div class="card">
-{{--    <img src="{{ asset($product->images->first()->path) }}" class="card-img" width="500">--}}
+    <img src="{{ asset($product->images->first()->path) }}" class="card-img" height="300">
     <div class="card-body">
         <h4 class="card-title"><strong>${{ $product->price }}</strong></h4>
         <h5 class="card-title">{{ $product->title }}</h5>

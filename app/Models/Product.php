@@ -13,6 +13,10 @@ class Product extends Model
     use HasFactory;
     protected $table = 'products';
 
+    protected $with = [
+            'images',
+        ];
+
     /**
      * The attributes that are mass assignable.
      *
