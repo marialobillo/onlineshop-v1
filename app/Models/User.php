@@ -11,7 +11,7 @@ use App\Models\Order;
 use App\Models\Payment;
 use App\Models\Image;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory, Notifiable;
 
