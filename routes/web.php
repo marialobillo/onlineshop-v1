@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +17,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [MainController::class, 'index'])->name('main');
 
+Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
+
 Route::resource('products.carts', 'ProductCartController')->only(['store', 'destroy']);
 
 Route::resource('carts', 'CartController')->only(['index']);
@@ -29,7 +33,8 @@ Route::resource('orders.payments', 'OrderPaymentController')
     ->middleware(['verified']);
 
 Auth::routes([
-    'verify' => true
+    'verify' => true,
+//    'reset' => true
 ]);
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
