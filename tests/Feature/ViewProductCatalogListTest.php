@@ -19,7 +19,7 @@ class ViewProductCatalogListTest extends TestCase
         $product = Product::create([
             'title' => 'Test Product',
             'description' => 'Description of a product',
-            'product_price' => 1990,
+            'price' => 1990,
             'image' => 'https://source.unsplash.com/random',
             'stock' => 80,
             'status' => 'available'
@@ -30,7 +30,6 @@ class ViewProductCatalogListTest extends TestCase
         $response->assertSee('Test Product');
         $response->assertSee('Description of a product');
         $response->assertSee('19.90');
-        // $response->assertSee('https://source.unsplash.com/random');
         $response->assertSee('80');
         
     }

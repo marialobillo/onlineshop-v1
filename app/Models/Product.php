@@ -13,19 +13,9 @@ class Product extends Model
     use HasFactory;
     protected $table = 'products';
 
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $guarded = [];
 
-    /**
-     * The "booted" method of the model.
-     *
-     * @return void
-     */
+   
    
 
 
