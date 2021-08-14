@@ -5,7 +5,7 @@
    <p>{{ $product->subtitle }}</p>
    <p>{{ $product->price_in_dollars }}</p>
 
-   <p><img src="{{ $product->image }}" alt="">
+   <p><img src="{{ $product->image }}" alt="product-image">
         {{ $product->image }}
     </p>
    
