@@ -3,11 +3,14 @@
 @section('content')
    <h2>{{ $product->title }}</h2>
    <p>{{ $product->subtitle }}</p>
-   <p>{{ number_format($product->price / 100, 2) }}</p>
+   <p>{{ $product->price_in_dollars }}</p>
+
    <p><img src="{{ $product->image }}" alt="">
         {{ $product->image }}
     </p>
-   <p>{{ $product->stock }}</p>
-    @endsection
+   
+    <p>{{ $product->stock }}</p>
+
+@endsection
 
 

@@ -3,10 +3,13 @@
 namespace Database\Factories;
 
 use App\Models\Product;
+use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Database\Eloquent\Factories\Factory;
+
 
 class ProductFactory extends Factory
 {
+   
     /**
      * The name of the factory's corresponding model.
      *
@@ -27,7 +30,7 @@ class ProductFactory extends Factory
             'price' => $this->faker->randomFloat($maxDecimals = 2, $min = 3, $max = 100),
             'stock' => $this->faker->numberBetween(1, 10),
             'status' => $this->faker->randomElement(['available', 'unavailable']),
-            'image' => $this->faker->image->image(),
+            'image' => $this->faker->imageUrl(400, 200),
         ];
     }
 }

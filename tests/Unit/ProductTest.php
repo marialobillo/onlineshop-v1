@@ -2,15 +2,18 @@
 
 namespace Tests\Unit;
 
-use PHPUnit\Framework\TestCase;
+use App\Models\Product;
+use Tests\TestCase;
 
 class ProductTest extends TestCase
 {
-    /**
-     * @test
-     */
-    public function get_formatted_price()
+    /** @test */
+    public function get_product_price_in_dollars()
     {
-        $this->assertEquals(1, 1);
+        $product = Product::factory()->make([
+            'price' => 1990,
+        ]);
+
+        $this->assertEquals('19.90', $product->price_in_dollars);
     }
 }

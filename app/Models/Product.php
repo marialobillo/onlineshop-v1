@@ -15,7 +15,10 @@ class Product extends Model
 
     protected $guarded = [];
 
-   
+    public function getPriceInDollarsAttribute()
+    {
+        return number_format($this->price / 100, 2);
+    }
    
 
 
