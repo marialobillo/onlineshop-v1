@@ -16,4 +16,6 @@ class ProductTest extends TestCase
 
         $this->assertEquals('19.90', $product->price_in_dollars);
     }
+
+    
 }

@@ -20,6 +20,4 @@ class Product extends Model
         return number_format($this->price / 100, 2);
     }
    
-
-
 }
